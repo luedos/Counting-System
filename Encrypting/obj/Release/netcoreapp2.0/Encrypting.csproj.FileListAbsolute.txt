@@ -1,9 +1,9 @@
 C:\Users\vlol\source\repos\Encrypting\Encrypting\bin\Release\netcoreapp2.0\Encrypting.deps.json
 C:\Users\vlol\source\repos\Encrypting\Encrypting\bin\Release\netcoreapp2.0\Encrypting.dll
 C:\Users\vlol\source\repos\Encrypting\Encrypting\bin\Release\netcoreapp2.0\Encrypting.pdb
-C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Release\netcoreapp2.0\Encrypting.csprojResolveAssemblyReference.cache
 C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Release\netcoreapp2.0\Encrypting.csproj.CoreCompileInputs.cache
 C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Release\netcoreapp2.0\Encrypting.AssemblyInfoInputs.cache
 C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Release\netcoreapp2.0\Encrypting.AssemblyInfo.cs
 C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Release\netcoreapp2.0\Encrypting.dll
 C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Release\netcoreapp2.0\Encrypting.pdb
+c:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Release\netcoreapp2.0\Encrypting.csprojAssemblyReference.cache

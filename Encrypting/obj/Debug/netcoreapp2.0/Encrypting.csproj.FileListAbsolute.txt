@@ -6,4 +6,4 @@ C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Debug\netcoreapp2.0\Encrypt
 C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Debug\netcoreapp2.0\Encrypting.AssemblyInfo.cs
 C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Debug\netcoreapp2.0\Encrypting.dll
 C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Debug\netcoreapp2.0\Encrypting.pdb
-C:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Debug\netcoreapp2.0\Encrypting.csprojResolveAssemblyReference.cache
+c:\Users\vlol\source\repos\Encrypting\Encrypting\obj\Debug\netcoreapp2.0\Encrypting.csprojAssemblyReference.cache

@@ -665,29 +665,23 @@
   },
   "packageFolders": {
     "C:\\Users\\vlol\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\vlol\\source\\repos\\Encrypting\\Encrypting\\Encrypting.csproj",
+      "projectUniqueName": "c:\\Users\\vlol\\source\\repos\\Encrypting\\Encrypting\\Encrypting.csproj",
       "projectName": "Encrypting",
-      "projectPath": "C:\\Users\\vlol\\source\\repos\\Encrypting\\Encrypting\\Encrypting.csproj",
+      "projectPath": "c:\\Users\\vlol\\source\\repos\\Encrypting\\Encrypting\\Encrypting.csproj",
       "packagesPath": "C:\\Users\\vlol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vlol\\source\\repos\\Encrypting\\Encrypting\\obj\\",
+      "outputPath": "c:\\Users\\vlol\\source\\repos\\Encrypting\\Encrypting\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\vlol\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

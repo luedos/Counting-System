@@ -10,7 +10,7 @@ namespace Encrypting
         List<int> MyValue = new List<int>();
         int myOrder;
 
-        int MyOrder {
+        public int MyOrder {
             get { return myOrder; }
 
             set
@@ -151,20 +151,62 @@ namespace Encrypting
 
             if(MyValue.Count > 1)
             {
-                if(MyValue[count - 1] < 0)
-                    for(int i = count - 2; i >= 0; --i)
-                        if(MyValue[i] > 0)
+                if (MyValue[count - 1] < 0)
+                    for (int i = count - 2; i >= 0; --i)
+                        if (MyValue[i] > 0)
                         {
-                            MyValue[i] -= myOrder;
-                            ++MyValue[i + 1];
-                        }
+                            if (MyValue[i + 1] != 0)
+                            {
+                                MyValue[i] -= myOrder;
+                                ++MyValue[i + 1];
+                            }
+                            else
+                            {
+                                int localI = i + 1;
 
+                                while (localI < MyValue.Count && MyValue[localI] == 0)
+                                    ++localI;
+
+                                if (localI == MyValue.Count)
+                                    continue;
+
+                                while(localI > i)
+                                {
+                                    ++MyValue[localI];
+                                    MyValue[localI - 1] -= MyOrder;
+
+                                    --localI;
+                                }
+                            }
+                        }
                 if(MyValue[count - 1] > 0)
                     for(int i = count - 2; i >= 0; --i)
                         if(MyValue[i] < 0)
                         {
-                            MyValue[i] += myOrder;
-                            --MyValue[i + 1];
+                            
+                            if (MyValue[i + 1] != 0)
+                            {
+                                MyValue[i] += myOrder;
+                                --MyValue[i + 1];
+                            }
+                            else
+                            {
+                                int localI = i + 1;
+
+                                while (localI < MyValue.Count && MyValue[localI] == 0)
+                                    ++localI;
+
+                                if (localI == MyValue.Count)
+                                    continue;
+
+                                while (localI > i)
+                                {
+                                    --MyValue[localI];
+                                    MyValue[localI - 1] += MyOrder;
+
+                                    --localI;
+                                }
+                            }
                         }
             }
 
@@ -207,16 +249,58 @@ namespace Encrypting
                     for (int i = count - 2; i >= 0; --i)
                         if (inList[i] > 0)
                         {
-                            inList[i] -= inOrder;
-                            ++inList[i + 1];
+                            if (inList[i + 1] != 0)
+                            {
+                                inList[i] -= inOrder;
+                                ++inList[i + 1];
+                            }
+                            else
+                            {
+                                int localI = i + 1;
+
+                                while (localI < inList.Count && inList[localI] == 0)
+                                    ++localI;
+
+                                if (localI == inList.Count)
+                                    continue;
+
+                                while (localI > i)
+                                {
+                                    ++inList[localI];
+                                    inList[localI - 1] -= inOrder;
+
+                                    --localI;
+                                }
+                            }
                         }
 
                 if (inList[count - 1] > 0)
                     for (int i = count - 2; i >= 0; --i)
                         if (inList[i] < 0)
                         {
-                            inList[i] += inOrder;
-                            --inList[i + 1];
+                            if (inList[i + 1] != 0)
+                            {
+                                inList[i] += inOrder;
+                                --inList[i + 1];
+                            }
+                            else
+                            {
+                                int localI = i + 1;
+
+                                while (localI < inList.Count && inList[localI] == 0)
+                                    ++localI;
+
+                                if (localI == inList.Count)
+                                    continue;
+
+                                while (localI > i)
+                                {
+                                    --inList[localI];
+                                    inList[localI - 1] += inOrder;
+
+                                    --localI;
+                                }
+                            }
                         }
             }
 
@@ -272,7 +356,26 @@ namespace Encrypting
         public int this[int inIndex]
         {
             get { return MyValue[inIndex]; }
-            private set { MyValue[inIndex] = value; Normalize(); }
+            set
+            {
+                if (inIndex < 0)
+                    return;
+
+                if (inIndex >= MyValue.Count)
+                {
+                    if (value == 0)
+                        return;
+
+                    for (int i = MyValue.Count; i <= inIndex; ++i)
+                        MyValue.Add(0);
+
+                }
+
+                MyValue[inIndex] = value;
+
+                if(value >= myOrder || value <= -myOrder)
+                    Normalize();
+            }
         }
 
         public static CountSystem GetNewOrder(int inOrder, CountSystem inCS)
@@ -610,44 +713,7 @@ namespace Encrypting
 
             MyValue = retCS.MyValue;
         }
-
-
-        public static bool operator == (CountSystem inCSfirst, CountSystem inCSsecond)
-        {
-            CountSystem inSecond = inCSsecond;
-
-            if (inCSfirst.myOrder != inCSsecond.myOrder)
-                inSecond = GetNewOrder(inCSfirst.myOrder, inCSsecond);
-
-            if (inCSfirst.MyValue.Count != inSecond.MyValue.Count)
-                return false;
-
-            for (int i = 0; i < inCSfirst.MyValue.Count; ++i)
-                if (inCSfirst.MyValue[i] != inSecond.MyValue.Count)
-                    return false;
-
-            return true;
-
-        }
-
-        public static bool operator !=(CountSystem inCSfirst, CountSystem inCSsecond)
-        {
-            CountSystem inSecond = inCSsecond;
-
-            if (inCSfirst.myOrder != inCSsecond.myOrder)
-                inSecond = GetNewOrder(inCSfirst.myOrder, inCSsecond);
-
-            if (inCSfirst.MyValue.Count != inSecond.MyValue.Count)
-                return true;
-
-            for (int i = 0; i < inCSfirst.MyValue.Count; ++i)
-                if (inCSfirst.MyValue[i] != inSecond.MyValue.Count)
-                    return true;
-
-            return false;
-
-        }
-
+      
         public static bool operator >(CountSystem inCSfirst, CountSystem inCSsecond)
         {
             CountSystem inSecond = inCSsecond;
@@ -772,10 +838,18 @@ namespace Encrypting
         public override int GetHashCode()
         {
             int TestInt = 0;
+            int MiddleSum;
             unchecked
             {
                 for (int i = 0; i < MyValue.Count; ++i)
-                    TestInt += MyValue[i];
+                {
+                    MiddleSum = MyValue[i];
+                    for (int ii = 0; ii < i; ++ii)
+                        MiddleSum *= myOrder;
+
+                    TestInt += MiddleSum;
+
+                }
             }
             return TestInt;
         }
@@ -787,7 +861,20 @@ namespace Encrypting
             if (TestCS == null)
                 return false;
 
-            return this == TestCS;
+            CountSystem inSecond = TestCS;
+
+            if (myOrder != inSecond.myOrder)
+                inSecond = GetNewOrder(myOrder, TestCS);
+
+            if (MyValue.Count != inSecond.MyValue.Count)
+                return false;
+
+            for (int i = 0; i < MyValue.Count; ++i)
+                if (MyValue[i] != inSecond.MyValue[i])
+                    return false;
+
+            return true;
+
         }
 
         public override string ToString()
